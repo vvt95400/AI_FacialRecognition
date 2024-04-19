@@ -18,4 +18,6 @@ def classify_image():
     return response
 
 if __name__ == '__main__':
+    print("Starting Python Flask Server for Image Classification")
+    util.load_saved_artifacts()
     app.run(port = 5000)
