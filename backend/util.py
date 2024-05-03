@@ -31,8 +31,8 @@ def classify_image(image_base64_data, file_path=None):
         })
     if(len(result)==0):
         return "No Image identified"
-    return result
-    # return result[0]['class']
+    # return result
+    return result[0]['class']
 
 def class_number_to_name(class_num):
     return __class_number_to_name[class_num]
@@ -42,13 +42,13 @@ def load_saved_artifacts():
     global __class_name_to_number
     global __class_number_to_name
 
-    with open(r"C:\New folder\AI_FacialRecognition\backend\artifacts\class_dictionary.json", "r") as f:
+    with open(r"C:\Users\vansh\Documents\Programming\Web Development\Code\Projects\AI 2\backend\artifacts\class_dictionary.json", "r") as f:
         __class_name_to_number = json.load(f)
         __class_number_to_name = {v:k for k,v in __class_name_to_number.items()}
 
     global __model
     if __model is None:
-        with open(r'C:\New folder\AI_FacialRecognition\backend\artifacts\saved_model.pkl', 'rb') as f:
+        with open(r'C:\Users\vansh\Documents\Programming\Web Development\Code\Projects\AI 2\backend\artifacts\saved_model.pkl', 'rb') as f:
             __model = joblib.load(f)
     print("loading saved artifacts...done")
 
@@ -65,8 +65,8 @@ def get_cv2_image_from_base64_string(b64str):
     return img
 
 def get_cropped_image_if_2_eyes(image_path, image_base64_data):
-    face_cascade = cv2.CascadeClassifier(r'C:\New folder\AI_FacialRecognition\backend\opencv\haarcascades\haarcascade_frontalface_default.xml')
-    eye_cascade = cv2.CascadeClassifier(r'C:\New folder\AI_FacialRecognition\backend\opencv\haarcascades\haarcascade_eye.xml')
+    face_cascade = cv2.CascadeClassifier(r'C:\Users\vansh\Documents\Programming\Web Development\Code\Projects\AI 2\backend\opencv\haarcascades\haarcascade_frontalface_default.xml')
+    eye_cascade = cv2.CascadeClassifier(r'C:\Users\vansh\Documents\Programming\Web Development\Code\Projects\AI 2\backend\opencv\haarcascades\haarcascade_eye.xml')
 
     if image_path:
         img = cv2.imread(image_path)
@@ -88,11 +88,11 @@ def get_cropped_image_if_2_eyes(image_path, image_base64_data):
     return cropped_faces
 
 def get_b64_test_image_for_virat():
-    with open(r"C:\New folder\AI_FacialRecognition\backend\b64.txt") as f:
+    with open(r"C:\Users\vansh\Documents\Programming\Web Development\Code\Projects\AI 2\backend\b64.txt") as f:
         return f.read()
 
 if __name__ == '__main__':
     load_saved_artifacts()
 
     # print(classify_image(get_b64_test_image_for_virat(), None))
-    print(classify_image(None,r"C:\New folder\AI_FacialRecognition\test\virat2.webp"))
+    print(classify_image(None,r"C:\Users\vansh\Documents\Programming\Web Development\Code\Projects\AI 2\backend\viart2.jpg"))
