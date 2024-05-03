@@ -1,0 +1,21 @@
+{
+  "name": "first",
+  "version": "1.0.0",
+  "description": "this is a deno",
+  "main": "yes",
+  "scripts": {
+    "test": "hello"
+  },
+  "repository": {
+    "type": "git",
+    "url": "no"
+  },
+  "keywords": [
+    "kss"
+  ],
+  "author": "vvt",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+}

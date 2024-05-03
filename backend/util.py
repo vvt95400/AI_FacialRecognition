@@ -29,8 +29,10 @@ def classify_image(image_base64_data, file_path=None):
             'class_probability': np.around(__model.predict_proba(final)*100,2).tolist()[0],
             'class_dictionary': __class_name_to_number
         })
-
+    if(len(result)==0):
+        return "No Image identified"
     return result
+    # return result[0]['class']
 
 def class_number_to_name(class_num):
     return __class_number_to_name[class_num]
@@ -70,10 +72,12 @@ def get_cropped_image_if_2_eyes(image_path, image_base64_data):
         img = cv2.imread(image_path)
     else:
         img = get_cv2_image_from_base64_string(image_base64_data)
-
+    if img is None:
+        print("Empty")
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-
+    if(len(faces)==0):
+        print("Empty")
     cropped_faces = []
     for (x,y,w,h) in faces:
             roi_gray = gray[y:y+h, x:x+w]
@@ -90,5 +94,5 @@ def get_b64_test_image_for_virat():
 if __name__ == '__main__':
     load_saved_artifacts()
 
-    print(classify_image(get_b64_test_image_for_virat(), None))
-    print(classify_image(None,r"C:\New folder\AI_FacialRecognition\backend\viart1.jpg"))
+    # print(classify_image(get_b64_test_image_for_virat(), None))
+    print(classify_image(None,r"C:\New folder\AI_FacialRecognition\test\virat2.webp"))
