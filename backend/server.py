@@ -5,6 +5,10 @@ import util
 app = Flask(__name__)
 CORS(app)
 
+# @app.route('/hello')
+# def hello():
+#     return 'hi'
+
 @app.route('/api/data', methods=['GET'])
 def get_data():
     data = {"message": "Hello from Flask!"}
@@ -12,9 +16,11 @@ def get_data():
 
 @app.route('/classify_image', methods = ['GET','POST'])
 def classify_image():
-    data = request.json
-    print(data)
-    image_data = data.get('b64Data')
+    # print(data)
+    image_data = request.json.get('b64Data')
+    # print(image_data)
+
+    # image_data = request.form['image_data']
     response = jsonify(util.classify_image(image_data))
     response.headers.add_header('Access-Control-Allow-Origin','*')
     return response
