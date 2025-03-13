@@ -21,6 +21,9 @@ The application consists of three main components:
 3. **HTTP Request to Backend:** Upon clicking "Submit," the Base64-encoded image is sent to the backend via an HTTP POST request.
 4. **Display Result:** The response from the backend is displayed as text on the web page.
 
+![image](https://github.com/user-attachments/assets/dde7b3aa-aa7a-474b-8031-3a622901ea9a)
+
+
 ---
 
 ### Backend
@@ -57,7 +60,6 @@ The application consists of three main components:
 
 ## Future Work
 - Improve the AI model processing.
-- Enhance the frontend interface.
 - Add error handling and logging mechanisms.
 
 ---
